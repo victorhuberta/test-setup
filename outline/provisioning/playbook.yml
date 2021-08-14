@@ -1,8 +1,13 @@
 ---
 - hosts: all
+  become: yes
   vars:
     ansible_python_interpreter: "/usr/bin/python"
 
   roles:
+    - role: geerlingguy.docker
+      vars:
+        docker_users:
+          - vagrant
     - role: geerlingguy.nodejs
     - role: ocha.yarn
