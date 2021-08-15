@@ -15,7 +15,3 @@
       apt:
         pkg:
           - make
-    - name: "Build & run app."
-      ansible.builtin.command: make up
-      args:
-        chdir: /project
