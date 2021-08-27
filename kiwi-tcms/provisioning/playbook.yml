@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    ansible_python_interpreter: "/usr/bin/python"
+  roles:
+    - role: geerlingguy.docker
+      vars:
+        docker_users:
+          - vagrant
+  tasks:
+    - name: "Run kiwi-tcms containers."
+      shell: git clone --depth 1 https://github.com/kiwitcms/Kiwi.git /kiwi-tcms/ && cd /kiwi-tcms && docker-compose up -d
